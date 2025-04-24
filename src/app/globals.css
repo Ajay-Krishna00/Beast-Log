@@ -120,11 +120,10 @@
   }
 }
 @font-face {
-  font-family: 'SL';
-  src: url('/fonts/Eternal.ttf') format('trueType');
-  
+  font-family: "SL";
+  src: url("/fonts/Eternal.ttf") format("trueType");
 }
 
 .font-sl {
-  font-family: 'SL';
+  font-family: "SL";
 }

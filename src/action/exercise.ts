@@ -11,7 +11,10 @@ interface Workout {
   sets: number;
 }
 
-export const LoggingWorkout= async (workoutId:string,workoutData:Workout[]) =>{
+export const LoggingWorkout = async (
+  workoutId: string,
+  workoutData: Workout[],
+) => {
   try {
     const user = await getUser();
     if (!user) {
@@ -31,12 +34,10 @@ export const LoggingWorkout= async (workoutId:string,workoutData:Workout[]) =>{
             weight: 0,
           })),
         },
-
-      }
-    })
+      },
+    });
     return { errMsg: null };
-  }
-  catch (error) {
+  } catch (error) {
     return handleErr(error);
   }
-}
+};
