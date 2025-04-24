@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "pnpm dlx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "pnpm dlx prisma generate",
     "migrate": "pnpm dlx prisma generate && pnpm dlx prisma migrate dev"
   },
   "prisma": {

@@ -32,11 +32,12 @@ cd beast-log
 pnpm install
 
 # Set up your database
-pnpm migrate 
+pnpm migrate
 
 # Start the dev server
 pnpm run dev
 ```
+
 ---
 
 ## 🤝 Contributing
