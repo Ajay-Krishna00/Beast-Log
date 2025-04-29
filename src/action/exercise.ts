@@ -9,6 +9,7 @@ interface Workout {
   name: string;
   reps: number;
   sets: number;
+  weight: number;
 }
 
 export const LoggingWorkout = async (
@@ -25,13 +26,14 @@ export const LoggingWorkout = async (
       data: {
         id: workoutId,
         userId: user.id,
+        date: new Date(),
         exerciseLog: {
           create: workoutData.map((exercise) => ({
             id: exercise.id,
             name: exercise.name,
             reps: exercise.reps,
             sets: exercise.sets,
-            weight: 0,
+            weight: exercise.weight,
           })),
         },
       },
