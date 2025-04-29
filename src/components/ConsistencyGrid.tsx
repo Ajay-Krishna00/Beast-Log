@@ -4,7 +4,7 @@ const generateYearDays = (year: number): Date[] => {
   const startDate = new Date(year, 0, 1);
   const endDate = new Date(year, 11, 31);
   const days: Date[] = [];
-  let currentDate = new Date(startDate);
+  const currentDate = new Date(startDate);
 
   while (currentDate <= endDate) {
     days.push(new Date(currentDate));
