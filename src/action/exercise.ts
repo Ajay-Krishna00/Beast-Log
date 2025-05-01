@@ -33,7 +33,7 @@ export const LoggingWorkout = async (
             name: exercise.name,
             reps: exercise.reps,
             sets: exercise.sets,
-            weight: exercise.weight,
+            weight: exercise.weight || 0,
           })),
         },
       },
@@ -42,4 +42,38 @@ export const LoggingWorkout = async (
   } catch (error) {
     return handleErr(error);
   }
+};
+
+export const getWorkoutByYear = async (year: number) => {
+  const user = await getUser();
+
+  const workouts = await prisma.workout.findMany({
+    where: {
+      userId: user?.id,
+      date: {
+        gte: new Date(year, 0, 1),
+        lte: new Date(year, 11, 31),
+      },
+    },
+    include: {
+      exerciseLog: true,
+    },
+  });
+
+  const dateMap = new Map<string, { date: Date; workouts: typeof workouts }>();
+  workouts.forEach((workout) => {
+    const dateKey = workout.date.toDateString();
+    if (!dateMap.has(dateKey)) {
+      dateMap.set(dateKey, { date: workout.date, workouts: [] });
+    }
+    dateMap.get(dateKey)!.workouts.push(workout);
+  });
+  return dateMap;
+  // const result = Array.from(dateMap.values()).map((entry) => ({
+  //   date: entry.date,
+  //   workouts: entry.workouts.map((workout) => ({
+  //     exerciseLog: workout.exerciseLog,
+  //   })),
+  // }));
+  // return result;
 };

@@ -28,8 +28,8 @@ export const WorkoutNames = [
     value: "leg-raises",
   },
   {
-    name: "Romanian Dumbbell Deadlift",
-    value: "romanian-dumbbell-deadlift",
+    name: "Romanian Deadlift",
+    value: "romanian-deadlift",
   },
   {
     name: "Tricep Dips",

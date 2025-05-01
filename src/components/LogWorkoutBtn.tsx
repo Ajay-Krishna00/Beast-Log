@@ -47,13 +47,7 @@ function LogWorkoutBtn() {
     e.preventDefault();
     const workoutId = uuidv4();
     const workoutData = inputGroups
-      .filter(
-        (group) =>
-          group[0] !== "" &&
-          group[1] !== "" &&
-          group[2] !== "" &&
-          group[3] !== "",
-      )
+      .filter((group) => group[0] !== "" && group[1] !== "" && group[2] !== "")
       .map((group) => {
         const exerciseId = uuidv4();
         return {
@@ -75,9 +69,9 @@ function LogWorkoutBtn() {
           description: errMsg,
         });
       }
+      setOpen(false);
     }
     setIsLoading(false);
-    setOpen(false);
   };
 
   return (
@@ -93,9 +87,9 @@ function LogWorkoutBtn() {
             Log Workout
           </DialogTitle>
           <Separator decorative={true} />
-          <DialogDescription className="flex flex-row text-sm font-semibold text-center font-sl">
-            <InfoIcon color="blue" className="mr-1" />
-            Submission is limited to once per day
+          <DialogDescription className="text-center font-sl">
+            <InfoIcon className="inline mr-1" />
+            Fill in the details of your workout below
           </DialogDescription>
           <Button
             variant={"outline"}
@@ -109,25 +103,37 @@ function LogWorkoutBtn() {
         <form onSubmit={handleSubmit}>
           <div className="flex flex-row gap-1 mb-2">
             <div className="w-full min-w-[40px] justify-between flex flex-row">
-              <label htmlFor="workout-name" className="text-lg font-sl ">
+              <label
+                htmlFor="workout-name"
+                className="md:text-lg xs:text-md font-sl "
+              >
                 Workout Name
               </label>
               <Separator orientation="vertical" />
             </div>
             <div className="w-full max-w-15 min-w-13 justify-between flex flex-row">
-              <label htmlFor="workout-reps" className="text-lg font-sl">
+              <label
+                htmlFor="workout-reps"
+                className="md:text-lg xs:text-md font-sl"
+              >
                 Reps
               </label>
               <Separator orientation="vertical" />
             </div>
             <div className="w-full max-w-15 min-w-13 justify-between flex flex-row">
-              <label htmlFor="workout-sets" className="text-lg font-sl">
+              <label
+                htmlFor="workout-sets"
+                className="md:text-lg xs:text-md font-sl"
+              >
                 Sets
               </label>
               <Separator orientation="vertical" />
             </div>
             <div className="w-full max-w-15 min-w-13 justify-between flex flex-row">
-              <label htmlFor="workout-sets" className="text-lg font-sl">
+              <label
+                htmlFor="workout-sets"
+                className="md:text-lg xs:text-md font-sl"
+              >
                 Kilos
               </label>
             </div>
@@ -167,7 +173,7 @@ function LogWorkoutBtn() {
                         key={inputIndex}
                         type="number"
                         placeholder="0"
-                        className="w-13"
+                        className="w-13 border-1 border-gray-200 rounded-md p-1"
                         value={group[inputIndex]}
                         onChange={(e) =>
                           handleInputChange(
