@@ -26,7 +26,26 @@ const ContributionCalendar: React.FC<ContributionCalendarProps> = ({
 }) => {
   const days = generateYearDays(year);
   const [workoutData, setWorkoutData] = useState<
-    Map<string, { date: Date; workouts: any[] }>
+    Map<
+      string,
+      {
+        date: Date;
+        workouts: ({
+          exerciseLog: {
+            name: string;
+            id: string;
+            weight: number;
+            sets: number;
+            reps: number;
+            workoutId: string;
+          }[];
+        } & {
+          id: string;
+          userId: string;
+          date: Date;
+        })[];
+      }
+    >
   >(new Map());
   const [loading, setLoading] = useState(true);
 
@@ -107,7 +126,14 @@ const ContributionCalendar: React.FC<ContributionCalendarProps> = ({
                       date?.toDateString() + "\n",
                       ...workout.workouts.flatMap((w) =>
                         w.exerciseLog.map(
-                          (e: any) =>
+                          (e: {
+                            name: string;
+                            id: string;
+                            weight: number;
+                            sets: number;
+                            reps: number;
+                            workoutId: string;
+                          }) =>
                             `💪 ${e.name}: ${e.sets}x${e.reps} @ ${e.weight}kg`,
                         ),
                       ),
