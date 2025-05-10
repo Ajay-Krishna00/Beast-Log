@@ -129,3 +129,17 @@
 .font-sl {
   font-family: "SL";
 }
+html {
+  -webkit-overflow-scrolling: touch;
+}
+/* Add to your global.css */
+[cmdk-list] {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  [cmdk-list] {
+    overflow-y: scroll;
+  }
+}

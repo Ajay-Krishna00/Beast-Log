@@ -169,7 +169,7 @@ const ConsistencyGrid: React.FC = () => {
   const year = date.getFullYear();
 
   return (
-    <div>
+    <div className="mt-5">
       <h2 className="text-2xl text-white font-sl mb-4 px-2">
         Consistency Grid
       </h2>

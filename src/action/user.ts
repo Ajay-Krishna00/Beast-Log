@@ -34,7 +34,7 @@ export async function signupAction(email: string, password: string) {
       data: {
         id: userId,
         email: email,
-        name: email.split("@")[0], // Assuming name is derived from email
+        name: "", // Assuming name is derived from email
         age: 0, // Default value, replace with actual logic if needed
         height: 0, // Default value, replace with actual logic if needed
         weight: 0, // Default value, replace with actual logic if needed

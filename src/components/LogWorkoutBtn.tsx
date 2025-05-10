@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -21,10 +21,6 @@ function LogWorkoutBtn() {
   ]);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    //fetch data from db and set it to inputGroups
-  }, [open]);
 
   const handleInputChange = (
     groupIndex: number,
@@ -70,6 +66,7 @@ function LogWorkoutBtn() {
         });
       }
       setOpen(false);
+      window.location.reload();
     }
     setIsLoading(false);
   };
@@ -173,7 +170,7 @@ function LogWorkoutBtn() {
                         key={inputIndex}
                         type="number"
                         placeholder="0"
-                        className="w-13 border-1 border-gray-200 rounded-md p-1"
+                        className="md:w-13 xs:w-10 border-1 border-gray-200 rounded-md p-1"
                         value={group[inputIndex]}
                         onChange={(e) =>
                           handleInputChange(

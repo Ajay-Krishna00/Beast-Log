@@ -29,24 +29,24 @@ function SelectWorkoutDropdown({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="flex flex-1 md:min-w-[250px] xs:max-w-[122px] max-w-[450px] font-sl md:text-lg xs:text-sm overflow-x-hidden text-right"
+          className="flex flex-1 md:min-w-[250px] xs:max-w-[122px] max-w-[450px] font-sl md:text-lg xs:text-sm overflow-x-hidden text-right font-semibold"
         >
           {value
             ? workoutNames.find((workout) => workout.value === value)?.name
             : "Select Workout"}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[--radix-popover-trigger-width] p-0 overflow-y-auto">
-        <Command className="overflow-y-auto">
+      <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
+        <Command>
           <CommandInput placeholder="Search Workout" />
-          <CommandList className="overflow-y-auto">
+          <CommandList className="max-h-60 overflow-auto">
             <CommandEmpty>No workout found.</CommandEmpty>
-            <CommandGroup className="overflow-y-auto">
+            <CommandGroup>
               {workoutNames.map((workout) => (
                 <CommandItem
                   key={workout.value}
                   value={workout.value}
-                  className="cursor-pointer "
+                  className="cursor-pointer font-sl font-semibold"
                   onSelect={(currentValue) => {
                     onChange(currentValue === value ? "" : currentValue);
                     setOpen(false);

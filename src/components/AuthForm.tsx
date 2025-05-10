@@ -16,6 +16,7 @@ function AuthForm({ type }: Props) {
   const isLogin = type === "login";
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+
   const handleSubmit = (formdata: FormData) => {
     const email = formdata.get("email") as string;
     const password = formdata.get("password") as string;
