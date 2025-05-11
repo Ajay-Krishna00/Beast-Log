@@ -16,10 +16,8 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { WorkoutNames } from "@/components/WorkoutNames";
-import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
-import { Dumbbell, Info, InfoIcon, Loader2 } from "lucide-react";
+import { Dumbbell, Info, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -108,7 +106,7 @@ function StatusWindow() {
       setUserLevel(level);
     }
     setLoading(false);
-  }, [userWeight, isPending,router]);
+  }, [userWeight, router]);
 
   useEffect(() => {
     fetchUserData();
@@ -164,7 +162,7 @@ function StatusWindow() {
       ) : (
         <div className="flex items-center justify-center w-full h-full">
           {initial ? (
-              <Card className="w-full max-w-3xl  bg-gray-950 border-2 border-gray-800 relative">
+            <Card className="w-full max-w-3xl  bg-gray-950 border-2 border-gray-800 relative">
               <CardHeader>
                 <h1 className="text-xl font-semibold text-white font-sl text-center">
                   Status Window
@@ -188,9 +186,7 @@ function StatusWindow() {
                     <h1 className="text-xl text-white font-sl">
                       Overall Rank :{" "}
                     </h1>
-                    <h1
-                      className={`text-2xl font-sl ${userOvRank[1]} ml-4`}
-                    >
+                    <h1 className={`text-2xl font-sl ${userOvRank[1]} ml-4`}>
                       {" "}
                       {userOvRank[0]}
                     </h1>

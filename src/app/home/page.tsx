@@ -20,7 +20,7 @@ function Home() {
     fetchUser();
   }, [router]);
   useEffect(() => {
-    const timeout=setTimeout(async() => {
+    const timeout = setTimeout(async () => {
       const res = await fetch("/api/quote");
       const data = await res.json();
       toast.info("Quote", {
@@ -31,7 +31,7 @@ function Home() {
     return () => {
       clearTimeout(timeout);
     };
-  },[]);
+  }, []);
   return (
     <div className="flex flex-col gap-4 h-screen bg-gray-950">
       <Header />
