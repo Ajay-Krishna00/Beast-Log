@@ -79,11 +79,11 @@ export const bodyweightMultipliers: Record<string, number> = {
   "chin-ups": 1.4,
 
   // Core exercises
-  plank: 0.5, // seconds are counted as reps
+  "plank": 0.5, // seconds are counted as reps
   "side-plank": 0.6, // seconds are counted as reps
   "leg-raises": 1.1,
   "reverse-crunches": 1.0,
-  crunches: 0.8,
+  "crunches": 0.8,
   "bicycle-crunches": 0.9,
 
   // Default for unspecified exercises
@@ -99,22 +99,22 @@ const averageEffort: Record<string, number> = {
   "chin-ups": 12, // e.g., 2 sets of 6
 
   // Static exercises (in seconds)
-  plank: 60, // 1 minute plank
+  "plank": 60, // 1 minute plank
   "side-plank": 30, // 30 seconds per side
 
   // Core exercises (total reps across all sets)
   "leg-raises": 30, // e.g., 3 sets of 10
   "reverse-crunches": 30, // e.g., 3 sets of 10
-  crunches: 40, // e.g., 2 sets of 20
+  "crunches": 40, // e.g., 2 sets of 20
   "bicycle-crunches": 40, // e.g., 2 sets of 20
 
   // Weighted exercises (total kg volume: weight × reps × sets)
-  squat: 400, // e.g., 3 sets of 8 reps at 50kg
-  deadlift: 500, // e.g., 3 sets of 5 reps at 80kg
-  "romanian-deadlift": 500, // e.g., 3 sets of 5 reps at 80kg
+  "squat": 400, // e.g., 3 sets of 8 reps at 50kg
+  "deadlift": 500, // e.g., 3 sets of 5 reps at 80kg
+  "romanian-deadlift": 500, 
   "bench-press": 300, // e.g., 3 sets of 8 reps at 40kg
   "overhead-press": 200, // e.g., 3 sets of 8 reps at 25kg
-  "bicep-curls": 200, // e.g., 3 sets of 10 reps at 10kg
+  "bicep-curls": 180, // e.g., 3 sets of 10 reps at 10kg
   "dumbbell-row": 300, // e.g., 3 sets of 10 reps at 15kg
 
   // Default for unspecified exercises

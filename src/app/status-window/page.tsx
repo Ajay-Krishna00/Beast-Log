@@ -16,8 +16,10 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { WorkoutNames } from "@/components/WorkoutNames";
-import { Dumbbell, Info, Loader2 } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
+import { Dumbbell, Info, InfoIcon, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -50,17 +52,16 @@ function StatusWindow() {
   const router = useRouter();
 
   const fetchUserData = useCallback(async () => {
+    setLoading(true);
     const user = await getUser();
     if (!user) {
       router.push("/");
       return;
     }
-    setLoading(true);
     const data = await HasName();
     const name = data?.name;
     if (!name) {
       setInitial(false);
-
       setLoading(false);
       return;
     }
@@ -107,7 +108,7 @@ function StatusWindow() {
       setUserLevel(level);
     }
     setLoading(false);
-  }, [userWeight, userName, isPending,router]);
+  }, [userWeight, isPending,router]);
 
   useEffect(() => {
     fetchUserData();
@@ -163,7 +164,7 @@ function StatusWindow() {
       ) : (
         <div className="flex items-center justify-center w-full h-full">
           {initial ? (
-            <Card className="w-full max-w-3xl  bg-gray-950 border-2 border-gray-800 ">
+              <Card className="w-full max-w-3xl  bg-gray-950 border-2 border-gray-800 relative">
               <CardHeader>
                 <h1 className="text-xl font-semibold text-white font-sl text-center">
                   Status Window
@@ -178,7 +179,7 @@ function StatusWindow() {
                 <div className="flex flex-col w-full">
                   <div className="flex flex-row ">
                     <h1 className="text-xl text-white font-sl ">Level : </h1>
-                    <h1 className={`text-xl text-white ml-4`}>
+                    <h1 className={`text-xl text-white ml-4 font-bold`}>
                       {" "}
                       {userLevel.level}
                     </h1>
@@ -188,7 +189,7 @@ function StatusWindow() {
                       Overall Rank :{" "}
                     </h1>
                     <h1
-                      className={`text-2xl text-white font-sl ${userOvRank[1]} ml-4`}
+                      className={`text-2xl font-sl ${userOvRank[1]} ml-4`}
                     >
                       {" "}
                       {userOvRank[0]}

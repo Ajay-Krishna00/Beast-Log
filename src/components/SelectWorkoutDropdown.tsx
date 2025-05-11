@@ -39,7 +39,7 @@ function SelectWorkoutDropdown({
       <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
         <Command>
           <CommandInput placeholder="Search Workout" />
-          <CommandList className="max-h-60 overflow-auto">
+          <CommandList className="max-h-55 overflow-auto">
             <CommandEmpty>No workout found.</CommandEmpty>
             <CommandGroup>
               {workoutNames.map((workout) => (
