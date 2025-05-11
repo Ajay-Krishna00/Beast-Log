@@ -1,6 +1,6 @@
 # 💪Beast Log
 
-**Beast Log** is a minimalist workout logging web app built with Next.js and Prisma. It lets you quickly add and track your exercises — reps, sets, and more — with a clean and responsive UI.
+**Beast Log** is a minimalist workout logging web app built with Next.js and Prisma. It lets you quickly add and track your exercises — reps, sets, and more — with a clean and responsive UI. Now with RPG-style gamification!
 
 ---
 
@@ -9,6 +9,10 @@
 - 📋 Log your daily workouts with exercise name, reps, and sets
 - ➕ Add multiple exercises dynamically in one session
 - ✅ Submit and store workout logs to your database
+- 🎮 RPG-style gamification system to track your progress
+- 📊 Exercise ranking system (from E to SS) based on performance
+- 📱 Clean, responsive UI optimized for mobile and desktop
+- 🏆 Level up system based on consistent workout days
 
 ---
 
@@ -17,7 +21,7 @@
 - **Frontend**: Next.js, TypeScript
 - **UI Components**: Custom + shadcn/ui
 - **Icons**: lucide-react
-- **Database**: Prisma ORM (schema included), Supabase
+- **Database**: Prisma ORM , Supabase
 
 ---
 
