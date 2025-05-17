@@ -170,7 +170,7 @@ function LogWorkoutBtn() {
                         key={inputIndex}
                         type="number"
                         placeholder="0"
-                        className="md:w-13 xs:w-10 border-1 border-gray-200 rounded-md p-1"
+                        className="sm:w-20 w-12 max-w-12 border-1 border-gray-200 rounded-md p-1"
                         value={group[inputIndex]}
                         onChange={(e) =>
                           handleInputChange(

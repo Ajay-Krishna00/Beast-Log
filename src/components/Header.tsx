@@ -6,7 +6,7 @@ import LogoutButton from "./LogoutButton";
 function Header() {
   return (
     <header
-      className="flex bg-black relative h-22 w-full justify-between items-center px-3 sm:px-8 "
+      className="fixed flex bg-black/88  h-22 w-full justify-between items-center px-3 sm:px-8 z-100 "
       style={{ boxShadow: "0 0 10px 0 rgba(77, 209, 223, .5)" }}
     >
       <Link href="/home" className="flex items-center gap-2">

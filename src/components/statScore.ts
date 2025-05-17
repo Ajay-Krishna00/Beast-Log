@@ -28,7 +28,7 @@ export function calculateScore({
   switch (type) {
     case "static":
       // For static exercises like planks, use the duration or reps as seconds held
-      rawPerformance = reps;
+      rawPerformance = reps * sets;
       break;
 
     case "bodyweight":

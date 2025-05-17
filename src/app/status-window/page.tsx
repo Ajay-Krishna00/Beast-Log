@@ -1,6 +1,7 @@
 "use client";
 import { getBestExercise, HasName, SetName } from "@/action/stat";
 import { getUser } from "@/auth/server";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import {
   calculateScore,
@@ -104,6 +105,8 @@ function StatusWindow() {
       setUserStats(sortedUserScore);
       const level = await getUserLevel();
       setUserLevel(level);
+      console.log(userBestExercises);
+      console.log(userStats);
     }
     setLoading(false);
   }, [userWeight, router]);
@@ -160,7 +163,7 @@ function StatusWindow() {
           <Loader2 className="animate-spin ml-2 text-white" />
         </div>
       ) : (
-        <div className="flex items-center justify-center w-full h-full">
+        <div className="flex items-center justify-center w-full h-full mt-26">
           {initial ? (
             <Card className="w-full max-w-3xl  bg-gray-950 border-2 border-gray-800 relative">
               <CardHeader>
@@ -335,6 +338,7 @@ function StatusWindow() {
           )}
         </div>
       )}
+      <Footer />
     </div>
   );
 }

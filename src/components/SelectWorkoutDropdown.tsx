@@ -29,7 +29,7 @@ function SelectWorkoutDropdown({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="flex flex-1 md:min-w-[250px] xs:max-w-[122px] max-w-[450px] font-sl md:text-lg xs:text-sm overflow-x-hidden text-right font-semibold"
+          className="flex flex-1 md:min-w-[250px] sm:max-w-[122px] max-w-[450px] font-sl md:text-lg xs:text-sm overflow-x-hidden text-right font-semibold"
         >
           {value
             ? workoutNames.find((workout) => workout.value === value)?.name
