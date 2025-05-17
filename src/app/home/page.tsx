@@ -18,6 +18,17 @@ function Home() {
       if (!user) {
         router.push("/");
       }
+      //Just making my inactive websites active again
+      const lastPing = localStorage.getItem("lastPing");
+      const lastPingDate = Date.now(); // gives you the current time in milliseconds.
+      if (
+        !lastPing ||
+        lastPingDate - parseInt(lastPing) > 1000 * 60 * 60 * 24 * 5
+      ) {
+        const pong=await fetch("https://task-manager-three-woad.vercel.app/ping");
+        localStorage.setItem("lastPing", lastPingDate.toString());
+        console.log("Pinged:", pong);
+      }
     };
     fetchUser();
   }, [router]);
