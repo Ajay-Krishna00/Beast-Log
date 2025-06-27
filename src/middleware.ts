@@ -1,4 +1,4 @@
-//import { createServerClient } from "@supabase/ssr";
+import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
@@ -12,47 +12,55 @@ export const config = {
 };
 
 export async function updateSession(request: NextRequest) {
-  // was let instead of const. modified since build error
-  const supabaseResponse = NextResponse.next({
+  let supabaseResponse = NextResponse.next({
     request,
   });
 
-  console.log("middleware ran");
+  const supabase = createServerClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value)
+          );
+          supabaseResponse = NextResponse.next({
+            request,
+          });
+          cookiesToSet.forEach(({ name, value }) =>
+            supabaseResponse.cookies.set(name, value)
+          );
+        },
+      },
+    }
+  )
 
-  // const supabase = createServerClient(
-  //   process.env.SUPABASE_URL!,
-  //   process.env.SUPABASE_ANON_KEY!,
-  //   {
-  //     cookies: {
-  //       getAll() {
-  //         return request.cookies.getAll()
-  //       },
-  //       setAll(cookiesToSet) {
-  //         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-  //         supabaseResponse = NextResponse.next({
-  //           request,
-  //         })
-  //         cookiesToSet.forEach(({ name, value }) =>
-  //           supabaseResponse.cookies.set(name, value)
-  //         )
-  //       },
-  //     },
-  //   }
-  // )
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
-  // const {
-  //   data: { user },
-  // } = await supabase.auth.getUser()
-
-  // if (
-  //   !user &&
-  //   !request.nextUrl.pathname.startsWith('/login') &&
-  //   !request.nextUrl.pathname.startsWith('/auth')
-  // ) {
-  //   // no user, potentially respond by redirecting the user to the login page
-  //   const url = request.nextUrl.clone()
-  //   url.pathname = '/login'
-  //   return NextResponse.redirect(url)
-  // }
-  return supabaseResponse;
+  if (
+    !user &&
+    !request.nextUrl.pathname.startsWith('/') &&
+    !request.nextUrl.pathname.startsWith('/login') &&
+    !request.nextUrl.pathname.startsWith('/signup')
+  ) {
+    // no user, potentially respond by redirecting the user to the login page
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url);
+  }
+  else if (user &&
+    (request.nextUrl.pathname === "/login" ||
+      request.nextUrl.pathname === "/signup" ||
+      request.nextUrl.pathname==="/"
+    )) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/home';
+    return NextResponse.redirect(url);
+  }
 }
