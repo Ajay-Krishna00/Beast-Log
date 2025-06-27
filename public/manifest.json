@@ -1,0 +1,21 @@
+{
+  "name": "BeastLog",
+  "short_name": "BeastLog",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "description": "a minimalist workout logging web app that lets you quickly add and track your exercises — reps, sets, and more — with a clean and responsive UI. Now with RPG-style gamification!",
+  "icons": [
+    {
+      "src": "/beast.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/beast.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

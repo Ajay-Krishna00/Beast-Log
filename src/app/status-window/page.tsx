@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/card";
 import { WorkoutNames } from "@/components/WorkoutNames";
 import { Dumbbell, Info, Loader2 } from "lucide-react";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -155,6 +156,11 @@ function StatusWindow() {
   };
 
   return (
+    <>
+    <Head>
+      <title>Status Window</title>
+      <meta name="description" content="Status Window of Beast Log" />
+    </Head>
     <div className="flex flex-col gap-4 min-h-screen w-screen bg-gray-950 ">
       <Header />
       {loading ? (
@@ -340,6 +346,7 @@ function StatusWindow() {
       )}
       <Footer />
     </div>
+    </>
   );
 }
 

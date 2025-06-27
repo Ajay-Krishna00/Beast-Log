@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LogWorkoutBtn from "@/components/LogWorkoutBtn";
 import { Button } from "@/components/ui/button";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
@@ -53,6 +54,11 @@ function Home() {
     };
   }, []);
   return (
+    <>
+      <Head>
+        <title>Home</title>
+        <meta name="description" content="Home page of Beast Log" />
+      </Head>
     <div className="flex flex-col gap-4 h-screen bg-gray-950">
       <Header />
       <div className="flex justify-end mt-26 ">
@@ -76,6 +82,7 @@ function Home() {
       </div>
       <Footer />
     </div>
+    </>
   );
 }
 
